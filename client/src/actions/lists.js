@@ -28,3 +28,23 @@ export const addList = (list) => async (dispatch) =>{
         console.log(error);
     }
 }
+
+export const deleteList = (id) => async (dispatch)=>{
+    try{
+        await api.deleteList(id);
+
+        dispatch({type: DELETE, payload: id});
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const addListItem = (id, list) => async (dispatch)=>{
+    try{
+        const {data} = await api.addListItem(id, list)
+
+        dispatch({type: UPDATE, payload: data})
+    }catch(error){
+        console.log(error);
+    }
+}

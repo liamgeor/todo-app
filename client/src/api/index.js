@@ -13,5 +13,14 @@ export const fetchLists = () =>{
 
 //adds a new todo list
 export const addList = (newList) =>{
+    console.log("IN API")
     return axios.post(url, newList);
+}
+
+export const deleteList = (id) =>{
+    return axios.delete(`${url}/${id}`);
+}
+
+export const addListItem = (id, itemData) =>{
+    return axios.patch(`${url}/${id}`, itemData);
 }

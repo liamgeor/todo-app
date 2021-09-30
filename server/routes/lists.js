@@ -1,6 +1,6 @@
 import express from 'express';
 
-import {getLists, addList} from '../controllers/lists.js'
+import {getLists, addList, deleteList, addListItem} from '../controllers/lists.js'
 
 
 /*
@@ -13,5 +13,9 @@ const router = express.Router();
 router.get('/', getLists);
 
 router.post('/', addList);
+
+router.delete('/:id', deleteList);
+
+router.patch('/:id', addListItem);
 
 export default router;

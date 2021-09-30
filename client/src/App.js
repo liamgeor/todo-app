@@ -1,7 +1,7 @@
 import {React, useEffect} from 'react'
-import AddItem from './components/AddItem.js'
+import Home from './components/Home/Home.js'
 import {getLists} from './actions/lists.js'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 /*
     The App component is the basis for all React projects
@@ -11,21 +11,15 @@ import {useDispatch, useSelector} from 'react-redux';
 const App = () => {
 
     const dispatch = useDispatch();
-
-    const lists = useSelector((state) => state.lists);
-
-
     useEffect(() =>{
         dispatch(getLists());
-        console.log(lists)
     }, [dispatch]);
 
 
 
     return (
-        <div>
-            <h1></h1>
-            <AddItem/>
+        <div className="h-screen w-100 bg-green-200">
+            <Home/>
         </div>
     )
 }

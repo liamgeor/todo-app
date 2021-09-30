@@ -25,21 +25,33 @@ export const addList = async (req, res) =>{
     const newList = new ToDoListMessage(list);
 
     try{
+        await newList.save();
         res.status(201).json(newList);    
     }catch(error){
+        
         res.status(409).json({message: error.message})
+        
     }
 }
 
+export const deleteList = async (req, res) =>{
+    const {id} = req.params;
 
-//WIP add an item to an existing todo list
-export const addItem = async (req, res) =>{
-    const {id: _id} = req.params;
-    const list = req.body;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('Invalid List ID');
 
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Invalid List ID');
+    await ToDoListMessage.findByIdAndDelete(id);
 
-    const updatedList = await ToDoListMessage.findByIdAndUpdate(_id, list, {new: true});
+    res.json({message: 'List deleted'});
+}
+
+export const addListItem = async(req,res) =>{
+    const {id} = req.params;
+    const listItem = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('Invalid List ID');
+
+
+    const updatedList = await ToDoListMessage.findByIdAndUpdate(id, {$push: {"items": listItem}}, {upsert: true, new: true})
 
     res.json(updatedList);
 }

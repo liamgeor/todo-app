@@ -11,10 +11,11 @@ export default (lists = [], action)=>{
         case FETCH_ALL:
             return action.payload;
         case CREATE: 
-            console.log("Creating");
-            console.log(action);
-            console.log(lists);
             return [...lists, action.payload];
+        case DELETE:
+            return lists.filter((list) => list._id !== action.payload);
+        case UPDATE:
+            return lists.map((list) => list._id == action.payload ? action.payload : list )
         default:
             return lists;
     }
