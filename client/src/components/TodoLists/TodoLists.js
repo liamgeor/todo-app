@@ -1,8 +1,8 @@
 
 import {React, useState} from 'react'
 import { useSelector} from 'react-redux';
-import TodoList from '../TodoList/TodoList.js'
-import AddItem from '../AddItem/AddItem.js';
+import TodoList from './TodoList/TodoList.js'
+import AddItem from './AddList/AddList.js'
 
 const TodoLists = () => {
 
@@ -16,11 +16,11 @@ const TodoLists = () => {
     }
 
     return (
-        <div className="flex flex-row p-5 items-center">
+        <div className="flex flex-row p-5 items-start items-top ">
             {lists.map((list) =>
                 <TodoList key={list._id} list={list}/>
             )}
-            {!showAddList && <button className="border-1 border-black shadow bg-gray-400 hover:bg-gray-800 rounded p-3 m-3 text-white h-1/2 " onClick={toggleAddList} text="Add List">+</button>}
+            {!showAddList && <button className="border-1 border-black shadow bg-myGreen hover:bg-myDark rounded m-3 text-white h-8 w-1/6" onClick={toggleAddList} text="Add List">+</button>}
             {showAddList && <AddItem toggle={toggleAddList}/>}
         </div>
     )

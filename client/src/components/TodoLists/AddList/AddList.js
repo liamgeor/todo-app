@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import {addList} from '../../actions/lists.js'
+import {addList} from '../../../actions/lists.js'
 import {useDispatch} from 'react-redux';
 
 
@@ -32,8 +32,8 @@ const AddItem = ({toggle}) => {
                 <input className="border-1 border-black shadow  rounded px-3 m-3" type="text" placeholder="Title" onChange={(e) => setListData(prevState => ({...prevState, title: e.target.value}))}/>
                 <input className="border-1 border-black shadow  rounded px-3 m-3" type="text" placeholder="Creator" onChange={(e) => setListData(prevState => ({...prevState, creator: e.target.value}))}/>   
                 <div className="flex flex-row justify-center">
-                    <button className="border-1 border-black shadow bg-gray-400 rounded hover:bg-gray-800 px-3 text-white mx-3" onClick={handleSubmit}>Add List</button>
-                    <button className="border-1 border-black shadow bg-gray-400 rounded hover:bg-gray-800 px-3 text-white mx-3" onClick={toggle}>Cancel</button>                  
+                    <button className="border-1 border-black rounded shadow bg-myGreen hover:bg-myDark px-3 text-white mx-3" onClick={handleSubmit}>Add List</button>
+                    <button className="border-1 border-black rounded shadow bg-myGreen hover:bg-myDark px-3 text-white mx-3" onClick={toggle}>Cancel</button>                  
                 </div>
             </div>
             

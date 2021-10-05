@@ -1,5 +1,5 @@
 import * as api from '../api/index.js';
-import {FETCH_ALL, CREATE, UPDATE, LIKE, DELETE} from '../constants/actionTypes.js'
+import {FETCH_ALL, CREATE, UPDATE, UPDATE_ITEM, DELETE} from '../constants/actionTypes.js'
 
 /*
     These are the actions called from the web page in order to access the api and preform dispatch operations on the state
@@ -46,5 +46,15 @@ export const addListItem = (id, list) => async (dispatch)=>{
         dispatch({type: UPDATE, payload: data})
     }catch(error){
         console.log(error);
+    }
+}
+
+export const updateListItem = (item) => async (dispatch)=>{
+    try{
+        const {data} = await api.updateListItem(item)
+
+        dispatch({type: UPDATE_ITEM, payload: data})
+    }catch(error){
+        console.log(error)
     }
 }

@@ -18,7 +18,7 @@ const App = () => {
 
 
     return (
-        <div className="h-screen w-100 bg-green-200">
+        <div className="h-screen w-100 bg-blue-300">
             <Home/>
         </div>
     )

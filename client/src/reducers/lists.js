@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, UPDATE, LIKE, DELETE} from '../constants/actionTypes.js'
+import {FETCH_ALL, CREATE, UPDATE, UPDATE_ITEM, DELETE} from '../constants/actionTypes.js'
 
 /*
     Exporting the lists state
@@ -15,7 +15,9 @@ export default (lists = [], action)=>{
         case DELETE:
             return lists.filter((list) => list._id !== action.payload);
         case UPDATE:
-            return lists.map((list) => list._id == action.payload ? action.payload : list )
+            return lists.map((list) => list._id == action.payload._id ? action.payload : list);
+        case UPDATE_ITEM:
+            return lists.map((list) => list._id == action.payload._id ? action.payload : list);
         default:
             return lists;
     }

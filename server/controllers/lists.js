@@ -55,3 +55,19 @@ export const addListItem = async(req,res) =>{
 
     res.json(updatedList);
 }
+
+export const updateListItem = async(req, res) =>{
+    const {parentID, itemID} = req.params;
+
+    console.log(parentID);
+    console.log(itemID);
+
+    const listItem = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(parentID)) return res.status(404).send('Invalid List ID');
+
+    const updatedList = await ToDoListMessage.findOneAndUpdate({"_id" : parentID, "items._id": itemID}, {$set: {"items.$": listItem}});
+
+    res.json(updatedList);
+
+}

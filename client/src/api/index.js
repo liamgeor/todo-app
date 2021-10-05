@@ -24,3 +24,9 @@ export const deleteList = (id) =>{
 export const addListItem = (id, itemData) =>{
     return axios.patch(`${url}/${id}`, itemData);
 }
+
+export const updateListItem = (itemData)=>{
+    console.log("API");
+    console.log(itemData)
+    return axios.patch(`${url}/${itemData.parentList}/${itemData._id}`)
+}
